@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>webpack starterkit</title>
+<body>
+    <h1>Calculo de determinantes</h1>
+    <p>Seleccione tamaño de la matriz</p>
+    <select id="tamaño" onchange="run()">
+        <option value="2">2x2</option>
+        <option value="3">3x3</option>
+        <option value="4">4x4</option>
+    </select>
+    <button id="boton1">Crear Matriz</button>
+    <div>&nbsp;</div>
+    <div>
+      <form>
+          <table id="matriz" border="0"></table>
+      </form>
+    </div>
+    <div>&nbsp;</div>
+    <button id="boton2">Calcular Determinante</button>
+<script src="scripts.js"></script>
+<script src="funciones.js"></script>
+</body>
+</html>
