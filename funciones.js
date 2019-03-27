@@ -3,14 +3,9 @@
 function createForm(){
   //borrar tabla anterior
   document.getElementById('matriz').innerHTML = ""
-
-
-
     matrix.filas = h;
     matrix.columnas = h;
-
   //creación de nueva tabla
-
     for (let i = 0; i < matrix.filas; i++) {
       let row = document.createElement("TR");
         for (let j = 0; j < matrix.columnas; j++) {
@@ -26,7 +21,6 @@ function createForm(){
     }
 
     boton2.style.display = 'inline';
-
 }
 
 //Funcion para obtener tamaño de matriz
@@ -41,54 +35,75 @@ function getData(){
   for (let i = 0; i < matrix.filas; i++) {
       for (let j = 0; j < matrix.columnas; j++) {
         let c = [i] + [j];
-        let valores = document.getElementById(c)
+        let valores = document.getElementById(c);
         data.push(valores.value);
-          console.log(c);
-          console.log(typeof(c));
       }
   }
-  console.log(data);
+
 }
 
 //calculo determinante 2x2
-function dospordos(){
-  let a  =  parseInt(data[0]);
-  let b =   parseInt(data[1]);
-  let c =   parseInt(data[2]);
-  let d =   parseInt(data[3]);
-  let determinant = Math.abs((a*d)-(b*c));
-  console.log(determinant);
+function dospordos(calcular){
+  determinant = 0;
+  let a  = document.getElementById(calcular[0]);
+  let b =  document.getElementById(calcular[1]);
+  let c =  document.getElementById(calcular[2]);
+  let d =  document.getElementById(calcular[3]);
+  determinant2 = ((a.value)*(d.value))-((b.value)*(c.value));
 }
 
-//calculo de menores de Matriz
-function menoresMatriz(){
+function matrixpordos(calcular){
+  determinant = 0;
+  let a  =  parseInt(calcular[0]);
+  let b =   parseInt(calcular[1]);
+  let c =   parseInt(calcular[2]);
+  let d =   parseInt(calcular[3]);
+  determinant2 = (a*d)-(b*c);
+
+}
+
+//calculo de valores de Matriz
+function valoresMatriz(){
   valores = [];
+  // Valores a multiplicar por el menor de la matrix
   for (let i = 0; i < matrix.filas; i++) {
         let v = "0" + [i];
-        console.log(v);
-        console.log(typeof(v));
         valores.push(v);
   }
-  console.log(valores);
+}
 
-  for (let i = 0; i < valores.length; i++) {
-    let pr = valores[i];
-    for (let j = 1; i <= valores.length; i++) {
-      if (pr.charAt(1) == i) {
-        continue;
-      }else {
-      let a = [j]+[i];
-      menor.push(a);
-      console.log(menor);
-      }
-
-    }
+function menoresMatriz(){
+  //Menores de Matriz
+  for (let i = 1; i < matrix.filas; i++) {
+      for (let j = 0; j < matrix.columnas; j++) {
+        let c = [i] + [j];
+        menor.push(c);
+        }
   }
 
 }
 
-function calculo(){
+//calcular los cofactores
+function calculoCofactores(v){
+  cofactor = [];
+  for (let i = 0; i < menor.length; i++) {
+    let t = menor[i].charAt(1);
+    if (t == v) {
+      continue;
+    }else {
+      cofactor.push(menor[i]);
+    }
+  }
+}
 
-  //dospordos();
-  menoresMatriz();
+function calcularDeterminante(){
+  for (let i = 0; i < valores.length; i++) {
+    let v = valores[i].charAt(1);
+    let x = document.getElementById(valores[i]);
+    calculoCofactores(v);
+    dospordos(cofactor);
+    cofactorMultiplicado[i] = x.value * determinant2 * Math.pow(-1, i);
+
+
+  }
 }
