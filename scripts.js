@@ -61,10 +61,7 @@ boton2.addEventListener('click',function() {
     menoresMatriz();
     calcularDeterminante();
 
-    console.log(data);
-    console.log(valores);
-    console.log(menor);
-    console.log(cofactorMultiplicado);
+
 
     for (let i = 0; i < cofactorMultiplicado.length; i++) {
       determinant = determinant + parseInt(cofactorMultiplicado[i]);
@@ -72,5 +69,9 @@ boton2.addEventListener('click',function() {
   }
 
   console.log(determinant);
-
+  console.log(data);
+  console.log(valores);
+  console.log(menor);
+  console.log(cofactorMultiplicado);
+  console.log(cofactor);
 })

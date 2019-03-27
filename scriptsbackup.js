@@ -91,3 +91,22 @@ function menoresMatriz(){
   }
 
 }
+
+
+
+
+
+
+
+//calcular determinante
+function calcularDeterminante(){
+  for (let i = 0; i < valores.length; i++) {
+    let v = valores[i].charAt(1);
+    let x = document.getElementById(valores[i]);
+    calculoCofactores(v);
+    dospordos(cofactor);
+    cofactorMultiplicado[i] = x.value * determinant2 * Math.pow(-1, i);
+
+
+  }
+}

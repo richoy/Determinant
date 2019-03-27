@@ -42,18 +42,9 @@ function getData(){
 
 }
 
-//calculo determinante 2x2
-function dospordos(calcular){
-  determinant = 0;
-  let a  = document.getElementById(calcular[0]);
-  let b =  document.getElementById(calcular[1]);
-  let c =  document.getElementById(calcular[2]);
-  let d =  document.getElementById(calcular[3]);
-  determinant2 = ((a.value)*(d.value))-((b.value)*(c.value));
-}
-
+//calculo matrix 2x2
 function matrixpordos(calcular){
-  determinant = 0;
+  determinant2 = 0;
   let a  =  parseInt(calcular[0]);
   let b =   parseInt(calcular[1]);
   let c =   parseInt(calcular[2]);
@@ -62,7 +53,7 @@ function matrixpordos(calcular){
 
 }
 
-//calculo de valores de Matriz
+//calculo de valores de Matriz a multiplicar por el menor de la matrix
 function valoresMatriz(){
   valores = [];
   // Valores a multiplicar por el menor de la matrix
@@ -72,8 +63,9 @@ function valoresMatriz(){
   }
 }
 
+//Menores de Matriz
 function menoresMatriz(){
-  //Menores de Matriz
+
   for (let i = 1; i < matrix.filas; i++) {
       for (let j = 0; j < matrix.columnas; j++) {
         let c = [i] + [j];
@@ -96,6 +88,17 @@ function calculoCofactores(v){
   }
 }
 
+//calculo determinante 2x2 por cofactores
+function dospordos(calcular){
+  determinant2 = 0;
+  let a  = document.getElementById(calcular[0]);
+  let b =  document.getElementById(calcular[1]);
+  let c =  document.getElementById(calcular[2]);
+  let d =  document.getElementById(calcular[3]);
+  determinant2 = ((a.value)*(d.value))-((b.value)*(c.value));
+}
+
+//calcular determinante
 function calcularDeterminante(){
   for (let i = 0; i < valores.length; i++) {
     let v = valores[i].charAt(1);
