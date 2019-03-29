@@ -1,0 +1,23 @@
+
+
+body {
+  background-color: white;
+}
+
+h1{
+    text-align: center;
+    width: 100%;
+    color: aliceblue
+
+}
+
+.seleccion{
+    background-color: #635bff
+;
+    color: white;
+}
+
+.seleccion:hover{
+    background-color: #3f00ff;
+    color: white;
+}

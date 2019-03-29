@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>webpack starterkit</title>
+  <title>Calculo de Determinantes</title>
 <body>
-    <h1>Calculo de determinantes</h1>
-    <p>Seleccione tamaño de la matriz</p>
+    <div>
+          <h1>Calculo de determinantes</h1>
+    </div>
+    <p>Seleccione el tamaño de la matriz</p>
     <select id="tamaño" onchange="run()">
         <option value="2">2x2</option>
         <option value="3">3x3</option>
@@ -21,6 +23,9 @@
     </div>
     <div>&nbsp;</div>
     <button id="boton2">Calcular Determinante</button>
+    <div>&nbsp;</div>
+    <div id="resultado">
+    </div>
 <script src="scripts.js"></script>
 <script src="funciones.js"></script>
 </body>

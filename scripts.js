@@ -20,6 +20,7 @@ boton2.style.display = 'none';
 //creacion de matriz
 boton1.addEventListener('click',function() {
    createForm();
+   document.getElementById('resultado').innerHTML = "";
 })
 
 
@@ -68,6 +69,7 @@ boton2.addEventListener('click',function() {
     }
   }
 
+  document.getElementById('resultado').innerHTML = "El Determinante es: " + determinant;
   console.log(determinant);
   console.log(data);
   console.log(valores);
