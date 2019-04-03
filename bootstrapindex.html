@@ -15,14 +15,14 @@
     <div class="container">
 
         <div>Seleccione tamaño de la matriz</div>
-        <select id="tamaño" onchange="run()">
-            <option value="2">2x2</option>
-            <option value="3">3x3</option>
-            <option value="4">4x4</option>
-        </select>
-        
-        
-         <button id="boton1" class="btn btn-primary">Crear Matriz</button>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn seleccion" id="dos" onclick="run(2)">2 x 2</button>
+        <button type="button" class="btn seleccion" id="tres" onclick="run(3)">3 x 3</button>
+        <button type="button" class="btn seleccion" id="cuatro" onclick="run(4)">4 x 4</button>
+        </div>
+        </div>
+
         <div>&nbsp;</div>
         <div>
         <form>
@@ -34,23 +34,17 @@
         <div>&nbsp;</div>
         <div id="resultado">
         </div>
-            
-        
-        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group mr-2" role="group" aria-label="First group">
-        <button type="button" class="btn seleccion">2 x 2</button>
-        <button type="button" class="btn seleccion">3 x 3</button>
-        <button type="button" class="btn seleccion">4 x 4</button>
-        </div>
-        </div>
-  
+
+
+
+
 
 
 
 
     </div>
-    
-    
+
+
 <script src="scripts.js"></script>
 <script src="funciones.js"></script>
 </body>

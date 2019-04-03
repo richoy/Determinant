@@ -1,8 +1,6 @@
 
 //Variables
-var size = document.getElementById('tamaño'), // to get the size of the matriz
-    h = size.options[size.selectedIndex].value, //Set value for the first time
-    boton1 = document.getElementById('boton1'),
+var h = 0, //Set value for the first time,
     boton2 = document.getElementById('boton2'),
     valores = [],
     menor = [],
@@ -16,13 +14,6 @@ var matrix = {
       columnas: 0
     };
 boton2.style.display = 'none';
-
-//creacion de matriz
-boton1.addEventListener('click',function() {
-   createForm();
-   document.getElementById('resultado').innerHTML = "";
-})
-
 
 //calculo del determinante
 boton2.addEventListener('click',function() {
