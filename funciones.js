@@ -74,20 +74,20 @@ function matrixpordos(calcular){
 }
 
 //calculo de valores de Matriz a multiplicar por el menor de la matrix
-function valoresMatriz(){
+function valoresMatriz(filas){
   valores = [];
   // Valores a multiplicar por el menor de la matrix
-  for (let i = 0; i < matrix.filas; i++) {
+  for (let i = 0; i < filas; i++) {
         let v = "0" + [i];
         valores.push(v);
   }
 }
 
 //Menores de Matriz
-function menoresMatriz(){
+function menoresMatriz(filas){
 
-  for (let i = 1; i < matrix.filas; i++) {
-      for (let j = 0; j < matrix.columnas; j++) {
+  for (let i = 1; i < filas; i++) {
+      for (let j = 0; j < filas; j++) {
         let c = [i] + [j];
         menor.push(c);
         }
@@ -98,12 +98,14 @@ function menoresMatriz(){
 //calcular los cofactores
 function calculoCofactores(v){
   cofactor = [];
+  console.log("hola");
   for (let i = 0; i < menor.length; i++) {
     let t = menor[i].charAt(1);
     if (t == v) {
       continue;
     }else {
       cofactor.push(menor[i]);
+      console.log(menor[i]);
     }
   }
 }
@@ -119,14 +121,25 @@ function dospordos(calcular){
 }
 
 //calcular determinante
-function calcularDeterminante(){
-  for (let i = 0; i < valores.length; i++) {
-    let v = valores[i].charAt(1);
-    let x = document.getElementById(valores[i]);
+function calcularDeterminante(matriz){
+  for (let i = 0; i < matriz.length; i++) {
+    let v = matriz[i].charAt(1);
+    let x = document.getElementById(matriz[i]);
     calculoCofactores(v);
     dospordos(cofactor);
     cofactorMultiplicado[i] = x.value * determinant2 * Math.pow(-1, i);
+  }
+}
 
+function matrizMayor(matriz){
+  for (let i = 0; i < matriz.length; i++) {
+    let v = valores[i].charAt(1);
+    let x = document.getElementById(valores[i]);
+    calculoCofactores(v);
+    calcularDeterminante(cofactor);
+    for (let i = 0; i < cofactorMultiplicado.length; i++) {
+      determinant = determinant + parseInt(cofactorMultiplicado[i]);
+    }
 
   }
 }

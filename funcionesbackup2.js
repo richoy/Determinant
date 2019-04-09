@@ -24,9 +24,29 @@ function createForm(){
 }
 
 //Funcion para obtener tamaño de matriz
-function run(){
-  size = document.getElementById('tamaño');
-  h = size.options[size.selectedIndex].value;
+function run(valor){
+  h = valor;
+  document.getElementById("dos").style.background = "#635bff";
+  document.getElementById("tres").style.background = "#635bff";
+  document.getElementById("cuatro").style.background = "#635bff";
+  createForm();
+  document.getElementById('resultado').innerHTML = "";
+  let xc = "";
+  switch (h) {
+    case 2:
+      xc = "dos"
+      break;
+    case 3:
+      xc = "tres";
+      break;
+    case 4:
+      xc = "cuatro";
+      break;
+
+  }
+
+document.getElementById(xc).style.background = "#3f00ff";
+
 }
 
 //Funcion para obtener los valores de la tabla
@@ -84,6 +104,7 @@ function calculoCofactores(v){
       continue;
     }else {
       cofactor.push(menor[i]);
+      console.log(menor[i]);
     }
   }
 }

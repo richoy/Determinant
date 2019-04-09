@@ -1,112 +1,70 @@
 
-function createForm(){
-  var matrix = document.createElement("form");
-  var primero = document.createElement("input");
-  matrix.appendChild(primero);
-  var creacion = document.getElementById('matriz');
-  creacion.appendChild(matrix);
-}
+//Variables
+var h = 0, //Set value for the first time,
+    boton2 = document.getElementById('boton2'),
+    valores = [],
+    menor = [],
+    data = [],
+    cofactor = [],
+    cofactorMultiplicado = [],
+    determinant2 = 0,
+    determinant = 0;
+var matrix = {
+      filas: 0,
+      columnas: 0
+    };
+boton2.style.display = 'none';
+
+//calculo del determinante
+boton2.addEventListener('click',function() {
+  valores = [ ],
+  menor = [ ],
+  data = [ ],
+  cofactor = [ ],
+  determinant = 0;
+
+  let verificacion = true;
+
+  getData();
+ // Verificacion de espacios libres *********************
+  // for (let i = 0; i < data.length; i++) {
+  //   if (data[i] == "") {
+  //     verificacion = false;
+  //   }
+  // }
+  //
+  // if (verificacion == false) {
+  //   alert("There are values missing in the matrix");
+  // } else {
+  //   valoresMatriz();
+  //   menoresMatriz();
+  //   calcularDeterminante();
+  //
+  //   console.log(data);
+  //   console.log(valores);
+  //   console.log(menor);
+  //
+  // }
+  if (matrix.filas == 2) {
+    matrixpordos(data);
+    determinant = determinant2;
+  }else {
+    valoresMatriz();
+    menoresMatriz();
+    calcularDeterminante();
 
 
 
-
-
-
-
-
-
-
-
-function createForm(){
-  let matrix = document.createElement("form");
-  let al = [];
-  for (var i = 0; i < h; i++) {
-    al.push (document.createElement("input"));
-    matrix.appendChild(al[i]);
-  };
-
-
-  var creacion = document.getElementById('matriz');
-  creacion.appendChild(matrix);
-}
-
-
-
-
-
-
-function createForm(){
-  let matrix = document.createElement("form");
-  let horizontal = [];
-  let vertical = [];
-  for (var i = 0; i < h; i++) {
-
-
-
-
-    for (var j = 0; i < h; i++) {
-      vertical.push (document.createElement("input"));
-      matrix.appendChild(vertical[i]);
-    }
-
-
-    horizontal.push (document.createElement("input"));
-    matrix.appendChild(horizontal[i]);
-
-
-
-  };
-
-
-  var creacion = document.getElementById('matriz');
-  creacion.appendChild(matrix);
-}
-
-
-
-
-//calculo de menores de Matriz
-function menoresMatriz(){
-  valores = [];
-  for (let i = 0; i < matrix.filas; i++) {
-        let v = "0" + [i];
-        console.log(v);
-        console.log(typeof(v));
-        valores.push(v);
-  }
-  console.log(valores);
-
-  for (let i = 0; i < valores.length; i++) {
-    let pr = valores[i];
-    for (let j = 1; i <= valores.length; i++) {
-      if (pr.charAt(1) == i) {
-        continue;
-      }else {
-      let a = [j]+[i];
-      menor.push(a);
-      console.log(menor);
-      }
-
+    for (let i = 0; i < cofactorMultiplicado.length; i++) {
+      determinant = determinant + parseInt(cofactorMultiplicado[i]);
     }
   }
 
-}
-
-
-
-
-
-
-
-//calcular determinante
-function calcularDeterminante(){
-  for (let i = 0; i < valores.length; i++) {
-    let v = valores[i].charAt(1);
-    let x = document.getElementById(valores[i]);
-    calculoCofactores(v);
-    dospordos(cofactor);
-    cofactorMultiplicado[i] = x.value * determinant2 * Math.pow(-1, i);
-
-
-  }
-}
+  document.getElementById('resultado').innerHTML = "El Determinante es: " + determinant;
+  // console.log(determinant);
+  // console.log(data);
+  // console.log(valores);
+  // console.log(menor);
+  // console.log(cofactorMultiplicado);
+  // console.log(cofactor);
+})

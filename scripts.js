@@ -45,26 +45,39 @@ boton2.addEventListener('click',function() {
   //   console.log(menor);
   //
   // }
-  if (matrix.filas == 2) {
+
+
+switch (matrix.filas) {
+  case 2:
     matrixpordos(data);
     determinant = determinant2;
-  }else {
-    valoresMatriz();
-    menoresMatriz();
-    calcularDeterminante();
+    break;
 
-
+  case 3:
+    valoresMatriz(h);
+    menoresMatriz(h);
+    calcularDeterminante(valores);
 
     for (let i = 0; i < cofactorMultiplicado.length; i++) {
       determinant = determinant + parseInt(cofactorMultiplicado[i]);
     }
-  }
+  break;
 
-  document.getElementById('resultado').innerHTML = "El Determinante es: " + determinant;
-  console.log(determinant);
-  console.log(data);
-  console.log(valores);
-  console.log(menor);
-  console.log(cofactorMultiplicado);
-  console.log(cofactor);
+  case 4:
+    valoresMatriz(h);
+    menoresMatriz(h);
+    matrizMayor(valores)
+    //console.log(valores);
+    //console.log(menor);
+    break;
+}
+
+
+document.getElementById('resultado').innerHTML = "El Determinante es: " + determinant;
+  // console.log(determinant);
+  // console.log(data);
+  // console.log(valores);
+  // console.log(menor);
+  // console.log(cofactorMultiplicado);
+  // console.log(cofactor);
 })
