@@ -52,6 +52,7 @@ document.getElementById(xc).style.background = "#3f00ff";
 //Funcion para obtener los valores de la tabla
 function getData(){
   data = [];
+  lineauno = [];
   for (let i = 0; i < matrix.filas; i++) {
       for (let j = 0; j < matrix.columnas; j++) {
         let c = [i] + [j];
@@ -75,39 +76,41 @@ function matrixpordos(calcular){
 
 //calculo de valores de Matriz a multiplicar por el menor de la matrix
 function valoresMatriz(filas){
-  valores = [];
+  let primerafila = [];
   // Valores a multiplicar por el menor de la matrix
   for (let i = 0; i < filas; i++) {
         let v = "0" + [i];
-        valores.push(v);
+        primerafila.push(v);
   }
+  return primerafila;
 }
 
 //Menores de Matriz
 function menoresMatriz(filas){
-
+  let matrizmenor = [];
   for (let i = 1; i < filas; i++) {
       for (let j = 0; j < filas; j++) {
         let c = [i] + [j];
-        menor.push(c);
+        matrizmenor.push(c);
         }
   }
-
+  return matrizmenor;
 }
 
 //calcular los cofactores
-function calculoCofactores(v){
-  cofactor = [];
-  console.log("hola");
-  for (let i = 0; i < menor.length; i++) {
-    let t = menor[i].charAt(1);
+function calculoCofactores(v,matrizmenor){
+  let calculo = [];
+  //console.log("hola");
+  for (let i = 0; i < matrizmenor.length; i++) {
+    let t = matrizmenor[i].charAt(1);
     if (t == v) {
       continue;
     }else {
-      cofactor.push(menor[i]);
-      console.log(menor[i]);
+      calculo.push(matrizmenor[i]);
+    //  console.log(menor[i]);
     }
   }
+  return calculo;
 }
 
 //calculo determinante 2x2 por cofactores
@@ -121,25 +124,101 @@ function dospordos(calcular){
 }
 
 //calcular determinante
-function calcularDeterminante(matriz){
+function calcularDeterminanteTres(matriz,matrizmenor){
+  cofactor = [];
+  let determinant3 = 0;
   for (let i = 0; i < matriz.length; i++) {
     let v = matriz[i].charAt(1);
     let x = document.getElementById(matriz[i]);
-    calculoCofactores(v);
+    cofactor = calculoCofactores(v,matrizmenor);
+    // console.log(matriz[i]);
+    // console.log(cofactor);
     dospordos(cofactor);
     cofactorMultiplicado[i] = x.value * determinant2 * Math.pow(-1, i);
+    // console.log(determinant2);
+    // console.log(x.value);
+    // console.log(cofactorMultiplicado[i]);
   }
+
+  for (let i = 0; i < cofactorMultiplicado.length; i++) {
+    determinant3 = determinant3 + parseInt(cofactorMultiplicado[i]);
+  }
+  //console.log(determinant3);
+  return determinant3;
 }
 
-function matrizMayor(matriz){
-  for (let i = 0; i < matriz.length; i++) {
-    let v = valores[i].charAt(1);
-    let x = document.getElementById(valores[i]);
-    calculoCofactores(v);
-    calcularDeterminante(cofactor);
-    for (let i = 0; i < cofactorMultiplicado.length; i++) {
-      determinant = determinant + parseInt(cofactorMultiplicado[i]);
+
+function matrizMayor(matriz,matrizmenor){
+  let pr = [],
+      vs = [],
+      mn = [],
+      determinant4 = 0,
+      determinant5=0,
+      cofactor4 = [];
+    for (let i = 0; i < matriz.length; i++) {
+    let v = matriz[i].charAt(1);
+    pr = calculoCofactores(v,matrizmenor);
+    vs = calculoPrimera(pr);
+    mn = cofactor3(pr);
+    determinant4 = calcularDeterminanteTres(vs,mn)
+    cofactor4.push(determinant4);
+    console.log(pr);
+    console.log(vs);
+    console.log(mn);
+    console.log(determinant4);
+
     }
-
-  }
+    console.log(cofactor4);
+    for (let i = 0; i < matriz.length; i++) {
+      let multiplicador = document.getElementById(matriz[i]);
+      //console.log(multiplicador.value);
+      determinant5 = determinant5 +(multiplicador.value * parseInt(determinant4[i]) * Math.pow(-1, i));
+    }
+  return determinant5;
 }
+
+function calculoPrimera (arreglo) {
+  let primera = [];
+  for (let i = 0; i < 3; i++) {
+    primera.push(arreglo[i])
+  }
+  return primera;
+}
+
+function cofactor3(valor){
+  let cofactor3 = [];
+  for (let i = 3; i < valor.length; i++) {
+   cofactor3.push(valor[i]);
+  }
+  return cofactor3;
+}
+
+
+
+
+
+
+
+// function matrizMayor(matriz,matrizmenor){
+//   let cofactor4 = [];
+//   let determinant4 = 0;
+//   let menortres = [];
+//   for (let i = 0; i < matriz.length; i++) {
+//     let v = matriz[i].charAt(1);
+//     let x = document.getElementById(valores[i]);
+//     cofactor = calculoCofactores(v,matrizmenor);
+//     cofactor2 = cofactor3(cofactor);
+//     primerafila = calculoPrimera (cofactor2);
+//     // console.log(primerafila);
+//     // console.log(cofactor2);
+//     cofactor4.push(calcularDeterminanteTres(primerafila,cofactor2));
+//     //console.log(cofactor4[i]);
+//   }
+//   for (let i = 0; i < cofactor4.length; i++) {
+//     determinant4 = determinant4 + parseInt(cofactor4[i]);
+//   }
+//   return determinant4;
+// }
+//FALTA MULTIPLICAAAAAAAR el problema esta en que la matriz que calcula no es 3x3
+
+//sacar valores linea Funcion

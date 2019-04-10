@@ -6,7 +6,9 @@ var h = 0, //Set value for the first time,
     menor = [],
     data = [],
     cofactor = [],
+    cofactor2 = [],
     cofactorMultiplicado = [],
+    lineauno = [],
     determinant2 = 0,
     determinant = 0;
 var matrix = {
@@ -54,28 +56,28 @@ switch (matrix.filas) {
     break;
 
   case 3:
-    valoresMatriz(h);
-    menoresMatriz(h);
-    calcularDeterminante(valores);
-
-    for (let i = 0; i < cofactorMultiplicado.length; i++) {
-      determinant = determinant + parseInt(cofactorMultiplicado[i]);
-    }
+    valores = valoresMatriz(h);
+    menor = menoresMatriz(h);
+    //console.log(menor);
+    console.log(valores);
+    console.log(menor);
+    determinant = calcularDeterminanteTres(valores, menor);
   break;
 
   case 4:
-    valoresMatriz(h);
-    menoresMatriz(h);
-    matrizMayor(valores)
-    //console.log(valores);
-    //console.log(menor);
+    valores = valoresMatriz(h);
+    menor = menoresMatriz(h);
+    determinant = matrizMayor(valores,menor)
+    // console.log(valores);
+    // console.log(menor);
     break;
 }
 
 
 document.getElementById('resultado').innerHTML = "El Determinante es: " + determinant;
   // console.log(determinant);
-  // console.log(data);
+   //console.log(data);
+   //console.log(lineauno);
   // console.log(valores);
   // console.log(menor);
   // console.log(cofactorMultiplicado);
