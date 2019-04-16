@@ -4,28 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculo de Determinantes</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="styles.css">
 <body>
-    <div>
-          <h1>Calculo de determinantes</h1>
-    </div>
-    <p>Seleccione el tamaño de la matriz</p>
-    <select id="tamaño" onchange="run()">
-        <option value="2">2x2</option>
-        <option value="3">3x3</option>
-        <option value="4">4x4</option>
-    </select>
-    <button id="boton1">Crear Matriz</button>
-    <div>&nbsp;</div>
-    <div>
-      <form>
-          <table id="matriz" border="0"></table>
-      </form>
+    <div class="navbar navbar-light bg-primary">
+        <h1>Cálculo de determinantes</h1>
     </div>
     <div>&nbsp;</div>
-    <button id="boton2">Calcular Determinante</button>
-    <div>&nbsp;</div>
-    <div id="resultado">
+    <div class="container">
+
+        <div>Seleccione tamaño de la matriz</div>
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group mr-2" role="group" aria-label="First group">
+        <button type="button" class="btn seleccion" id="dos" onclick="run(2)">2 x 2</button>
+        <button type="button" class="btn seleccion" id="tres" onclick="run(3)">3 x 3</button>
+        <button type="button" class="btn seleccion" id="cuatro" onclick="run(4)">4 x 4</button>
+        </div>
+        </div>
+
+        <div>&nbsp;</div>
+        <div>
+        <form>
+              <table id="matriz" border="0"></table>
+        </form>
+        </div>
+        <div>&nbsp;</div>
+        <button id="boton2" class="btn btn-primary">Calcular Determinante</button>
+        <div>&nbsp;</div>
+        <div id="resultado">
+        </div>
+
+
+
+
+
+
+
+
     </div>
+
+
 <script src="scripts.js"></script>
 <script src="funciones.js"></script>
 </body>
